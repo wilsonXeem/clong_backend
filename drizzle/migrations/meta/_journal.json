@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1758295621547,
+      "tag": "0000_tidy_lorna_dane",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1758328939163,
+      "tag": "0001_vengeful_unicorn",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1758333141002,
+      "tag": "0002_ordinary_starfox",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1758458987868,
+      "tag": "0003_closed_mulholland_black",
+      "breakpoints": true
+    }
+  ]
+}

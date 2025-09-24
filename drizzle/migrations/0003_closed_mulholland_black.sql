@@ -1,0 +1,1 @@
+ALTER TABLE "article" ADD COLUMN "type" varchar(50) DEFAULT 'article' NOT NULL;
