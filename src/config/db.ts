@@ -3,8 +3,11 @@ import postgres from "postgres";
 import { DATABASE_URL } from "./env.js";
 import * as schema from "../models/index.js";
 
+// Ensure DATABASE_URL has correct protocol
+const dbUrl = DATABASE_URL.startsWith('postgres://') ? DATABASE_URL : `postgres://${DATABASE_URL}`;
+
 // Create PostgreSQL connection with SSL configuration
-const client = postgres(DATABASE_URL, {
+const client = postgres(dbUrl, {
   ssl: 'require'
 });
 
