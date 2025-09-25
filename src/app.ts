@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import cors from "cors";
+
 import compression from "compression";
 import { env } from "./config/env.js";
 import userRoutes from "./routes/user.js";
@@ -19,12 +19,16 @@ import { specs, swaggerUi } from "./config/swagger.js";
 const app: Application = express();
 
 /* --- Middlewares --- */
-app.use(
-  cors({
-    origin: '*',
-    credentials: true,
-  })
-);
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 app.use(compression());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
