@@ -21,7 +21,9 @@ const app: Application = express();
 /* --- Middlewares --- */
 app.use(
   cors({
-    origin: env.NODE_ENV === "production" ? process.env.FRONTEND_URL : true,
+    origin: env.NODE_ENV === "production" 
+      ? [process.env.FRONTEND_URL, 'http://localhost:4200', 'http://localhost:3000'].filter(Boolean)
+      : ['http://localhost:4200', 'http://localhost:3000', 'http://127.0.0.1:4200', 'http://127.0.0.1:3000'],
     credentials: true,
   })
 );
