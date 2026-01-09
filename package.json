@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Backend API for CloNG website with Express, TypeScript, Drizzle ORM, PostgreSQL, and Cloudinary",
   "main": "dist/server.js",
-  "type": "module",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
