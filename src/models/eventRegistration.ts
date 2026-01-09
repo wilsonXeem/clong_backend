@@ -4,8 +4,8 @@ import {
   varchar,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { event } from "./event";
-import { user } from "./user";
+import { event } from "./event.js";
+import { user } from "./user.js";
 
 export const eventRegistration = pgTable("event_registration", {
   id: uuid("id").primaryKey().defaultRandom(),
