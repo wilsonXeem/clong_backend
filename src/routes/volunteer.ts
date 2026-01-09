@@ -48,7 +48,7 @@ const router = Router();
  *       201:
  *         description: Volunteer application submitted successfully
  */
-router.post("/apply", authenticate, applyVolunteer);
+router.post("/apply", applyVolunteer);
 
 /**
  * @swagger

@@ -4,37 +4,31 @@ import { volunteer, user } from "../models/index.js";
 import { AuthRequest } from "../middlewares/authMiddleware.js";
 import { eq, and } from "drizzle-orm";
 
-export const applyVolunteer = async (req: AuthRequest, res: Response) => {
+export const applyVolunteer = async (req: Request, res: Response) => {
   try {
-    const userId = req.user?.id;
-    const { skills, availability, interests, experience, motivation } =
-      req.body;
+    const { firstName, lastName, email, phone, skills, availability, interests, experience, motivation } = req.body;
 
-    if (!userId) {
-      return res.status(401).json({
-        success: false,
-        message: "User not authenticated",
-      });
-    }
-
-    // Check if user already applied
+    // Check if email already exists in volunteer applications
     const existingApplication = await db
       .select()
       .from(volunteer)
-      .where(eq(volunteer.userId, userId))
+      .where(eq(volunteer.email, email))
       .limit(1);
 
     if (existingApplication.length > 0) {
       return res.status(400).json({
         success: false,
-        message: "You have already submitted a volunteer application",
+        message: "An application with this email already exists",
       });
     }
 
     const [newVolunteer] = await db
       .insert(volunteer)
       .values({
-        userId,
+        firstName,
+        lastName,
+        email,
+        phone,
         skills,
         availability,
         interests,
