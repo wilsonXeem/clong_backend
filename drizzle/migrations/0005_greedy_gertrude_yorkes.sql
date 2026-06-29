@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS "conference_registration" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"conference_slug" varchar(100) NOT NULL,
+	"full_name" varchar(255) NOT NULL,
+	"age_group" varchar(20) NOT NULL,
+	"gender" varchar(20) NOT NULL,
+	"country_of_residence" varchar(100) NOT NULL,
+	"state_city" varchar(100) NOT NULL,
+	"phone_whatsapp" varchar(30) NOT NULL,
+	"email" varchar(255) NOT NULL,
+	"current_status" varchar(50) NOT NULL,
+	"institution" varchar(255) NOT NULL,
+	"department_field_expertise" varchar(255) NOT NULL,
+	"highest_degree" varchar(30) NOT NULL,
+	"year_of_study" varchar(30),
+	"attended_before" boolean DEFAULT false NOT NULL,
+	"testimony" text,
+	"expectations" text NOT NULL,
+	"registered_at" timestamp DEFAULT now() NOT NULL
+);

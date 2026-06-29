@@ -13,6 +13,7 @@ import volunteerRoutes from "./routes/volunteer.js";
 import contactRoutes from "./routes/contact.js";
 import newsletterRoutes from "./routes/newsletter.js";
 import articleRoutes from "./routes/article.js";
+import conferenceRoutes from "./routes/conferenceRegistration.js";
 import { errorHandler, notFound } from "./middlewares/errorHandler.js";
 import { specs, swaggerUi } from "./config/swagger.js";
 
@@ -20,12 +21,18 @@ const app: Application = express();
 
 /* --- CORS Headers (Must be first) --- */
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  
-  if (req.method === 'OPTIONS') {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
   next();
@@ -59,6 +66,7 @@ app.use("/api/contacts", contactRoutes);
 app.use("/api/newsletter", newsletterRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/blogs", articleRoutes);
+app.use("/api/conferences", conferenceRoutes);
 
 /* --- API Documentation --- */
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));

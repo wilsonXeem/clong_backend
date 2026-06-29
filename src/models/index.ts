@@ -9,3 +9,4 @@ export { volunteer } from "./volunteer";
 export { contact } from "./contact";
 export { newsletter } from "./newsletter";
 export { article } from "./article";
+export { conferenceRegistration } from "./conferenceRegistration";
