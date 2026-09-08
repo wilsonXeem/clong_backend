@@ -21,7 +21,7 @@ const createTransporter = () => {
   return nodemailer.createTransport({
     host,
     port,
-    secure: port === 465,
+    secure: true,
     auth: { user, pass },
     tls: { rejectUnauthorized: false },
   });
@@ -60,8 +60,8 @@ export const sendBulkEmails = async (
     to,
     subject,
     htmlBody,
-    batchSize = 50,
-    delayMs = 1000,
+    batchSize = 5,
+    delayMs = 10000,
   } = options;
 
   const fromAddress =

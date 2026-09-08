@@ -137,6 +137,7 @@ export const getRecipientCount = async (
 
     res.json({ success: true, data: { count } });
   } catch (error) {
+    console.error('[getRecipientCount] Error:', error);
     next(createError("Failed to get recipient count", 500));
   }
 };

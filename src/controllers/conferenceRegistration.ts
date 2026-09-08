@@ -31,6 +31,9 @@ export const registerForConference = async (
       attendedBefore,
       testimony,
       expectations,
+      ministerName,
+      churchMinistry,
+      ministerPosition,
     } = req.body;
 
     // Basic validation
@@ -86,6 +89,9 @@ export const registerForConference = async (
         attendedBefore: Boolean(attendedBefore),
         testimony: testimony?.trim() || null,
         expectations: expectations.trim(),
+        ministerName: ministerName?.trim() || null,
+        churchMinistry: churchMinistry?.trim() || null,
+        ministerPosition: ministerPosition?.trim() || null,
       })
       .returning();
 

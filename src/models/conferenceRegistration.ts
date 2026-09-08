@@ -33,7 +33,12 @@ export const conferenceRegistration = pgTable("conference_registration", {
   highestDegree: varchar("highest_degree", { length: 30 }).notNull(),
   yearOfStudy: varchar("year_of_study", { length: 30 }),
 
-  // Section 3 — Conference Engagement
+  // Section 3 — Church / Ministry (optional)
+  ministerName: varchar("minister_name", { length: 255 }),
+  churchMinistry: varchar("church_ministry", { length: 255 }),
+  ministerPosition: varchar("minister_position", { length: 100 }),
+
+  // Section 4 — Conference Engagement
   attendedBefore: boolean("attended_before").notNull().default(false),
   testimony: text("testimony"),
   expectations: text("expectations").notNull(),
